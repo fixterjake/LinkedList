@@ -195,6 +195,20 @@ public interface LispADT {
     public LispADT add(Object c);
 
     /**
+     * Return the current position. First position is 0, last possible position
+     * is numOfElements (to allow adding after the last element). The current
+     * position in an empty list is 0.
+     * 
+     * <pre>
+     * < | >.curPos() -> 0 because
+     * < | >.add(x).curPos() -> 0
+     * </pre>
+     * 
+     * @return position of current element
+     */
+    public Integer curPos();
+    
+    /**
      * <p>
      * Return the element at the current position of this LispADT.
      * </p>
