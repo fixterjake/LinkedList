@@ -46,4 +46,10 @@ public class Lisp implements LispADT {
         return null;
     }
 
+    @Override
+    public Integer curPos() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
