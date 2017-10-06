@@ -84,14 +84,17 @@ public class Lisp implements LispADT {
 
     @Override
     public Integer size() {
-        // TODO Auto-generated method stub
-        return null;
+        return listSize;
     }
 
     @Override
     public Integer curPos() {
-        // TODO Auto-generated method stub
-        return null;
+        Link temp = head.next();
+        Integer i;
+        for (i = 0; curr != temp; i++) {
+            temp = temp.next();
+        }
+        return i;
     }
 
 }
