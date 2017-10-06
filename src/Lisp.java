@@ -46,26 +46,34 @@ public class Lisp implements LispADT {
 
     @Override
     public Object get() throws RuntimeException {
-        
-        return null;
+        return curr.Element();
     }
 
     @Override
     public LispADT moveTo(Integer p) {
-        // TODO Auto-generated method stub
-        return null;
+        if ((p < 0) || (p > listSize)) {
+            return null;
+        }
+        curr = head.next();
+        for (int i = 0; i < p; i++) {
+            curr = curr.next();
+        }
+        return this;
     }
 
     @Override
     public LispADT next() {
-        // TODO Auto-generated method stub
-        return null;
+        curr = curr.next();
+        return this;
     }
 
     @Override
     public LispADT prev() {
-        // TODO Auto-generated method stub
-        return null;
+        curr = head;
+        for (int i = 0; i < curPos(); i++) {
+            curr = curr.next();
+        }
+        return this;
     }
 
     @Override
