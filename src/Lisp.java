@@ -78,8 +78,17 @@ public class Lisp implements LispADT {
 
     @Override
     public LispADT remove() {
-        // TODO Auto-generated method stub
-        return null;
+        if (curr == tail) {
+            return null;
+        }
+        Object tmp = curr.Element();
+        curr.setElement(curr.next().Element());
+        if (curr.next() == tail) {
+            tail = curr;
+        }
+        curr.setNext(curr.next().next());
+        listSize--;
+        return this;
     }
 
     @Override
