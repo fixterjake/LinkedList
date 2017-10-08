@@ -3,27 +3,28 @@
  * @version 1.0
  */
 public class Lisp implements LispADT {
-    
+
     private Link head;
     private Link tail;
     private Link curr;
     private int listSize;
-    
+
     /**
      * Constructor with size param, ignores the param
+     * 
      * @param size
      */
     public Lisp(int size) {
         this();
     }
-    
+
     /**
      * Default constructor
      */
     public Lisp() {
         clear();
     }
-    
+
     /**
      * Clear the current list
      */
@@ -69,10 +70,14 @@ public class Lisp implements LispADT {
 
     @Override
     public LispADT prev() {
-        curr = head;
-        for (int i = 0; i < curPos(); i++) {
-            curr = curr.next();
+        if (head.next() == curr) {
+            return null;
         }
+        Link tmp = head;
+        while (tmp.next() != curr) {
+            tmp = tmp.next();
+        }
+        curr = tmp;
         return this;
     }
 
