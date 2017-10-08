@@ -14,7 +14,7 @@ public class LispTest {
      */
     public void testConstructorWithParam() {
         Lisp list = new Lisp(10);
-        assertSame(0, list.size());
+        assertSame(0, list.size()); //Assert empty list size is 0 even with size param
     }
     
     @Test
@@ -23,7 +23,7 @@ public class LispTest {
      */
     public void testConstructorNoParam() {
         Lisp list = new Lisp();
-        assertSame(0, list.size());
+        assertSame(0, list.size()); //Assert empty list size is 0
     }
     
     @Test
@@ -63,6 +63,39 @@ public class LispTest {
         assertSame(2, list.size()); //Make sure list size is two before clearing
         list.clear();
         assertSame(0, list.size()); //Make sure list size is 0 after clear
+    }
+    
+    @Test
+    /**
+     * Test with one int
+     */
+    public void testGetInt() {
+        Lisp list = new Lisp();
+        list.add(1); //Add int '1' to list
+        assertSame(1, list.get()); //Make sure int '1' is in the list
+    }
+    
+    @Test
+    /**
+     * Test get method with many integers
+     */
+    public void TestGetIntMany() {
+        Lisp list = new Lisp(100);
+        for (int i = 0; i < 101; i++) {
+            list.add(i);
+        }
+        list.moveTo(0); //Move to 0th element
+        assertSame(100, list.get()); //Make sure current is at 0th element and that element is 100
+        list.moveTo(100); //Move to 100th element
+        assertSame(0, list.get()); //Make sure current element is 100th and that element is 0
+    }
+    
+    @Test
+    public void testNext() {
+        Lisp list = new Lisp(2);
+        list.add(1); //Add one to list
+        list.add(2); //Add two to list
+        assertSame(1, list.next().get()); //Assert that the next link's value is one
     }
 
 }
