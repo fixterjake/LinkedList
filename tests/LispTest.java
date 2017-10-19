@@ -1,4 +1,5 @@
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 /**
@@ -84,7 +85,7 @@ public class LispTest {
      * Test get method with many integers
      */
     @Test
-    public void TestGetIntMany() {
+    public void testGetIntMany() {
         LinkedLisp list = new LinkedLisp(100);
         for (int i = 0; i < 101; i++) {
             list.add(i);
@@ -158,6 +159,16 @@ public class LispTest {
     }
     
     /**
+     * Try to remove with size zero
+     */
+    @Test
+    public void testRemoveSizeOne() {
+        LinkedLisp list = new LinkedLisp(1);
+        list.add(1); //Add '1' to list
+        list.remove(); //Remove that element
+        assertNull(list.remove()); //Try to remove hen size is 0
+    }
+    /**
      * Try to remove multiple elements
      */
     @Test
@@ -169,6 +180,36 @@ public class LispTest {
         list.remove(); //Remove current element from the list
         assertSame(1, list.size()); //Make sure size post-remove is 1
         assertSame(1, list.get()); //Make sure the element not removed is '1'
+    }
+    
+    /**
+     * Test for moving object to an index less than zero
+     */
+    @Test
+    public void testMoveLessThanZero() {
+        LinkedLisp list = new LinkedLisp(1);
+        list.add(1); //Add '1' to the list
+        assertNull(list.moveTo(-1)); //Try to move to index at -1
+    }
+    
+    /**
+     * Test for moving object to an index larger than the size
+     */
+    @Test
+    public void testMoveLargerThanSize() {
+        LinkedLisp list = new LinkedLisp(1);
+        list.add(1); //Add '1' to the list
+        assertNull(list.moveTo(100)); //Try to move to index 100
+    }
+    
+    /**
+     * Test current post method
+     */
+    @Test
+    public void testCurrPos() {
+        LinkedLisp list = new LinkedLisp();
+        Integer curr = list.curPos();
+        assertSame(0, curr);
     }
 
 }
