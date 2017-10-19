@@ -2,7 +2,7 @@
  * @author Jacob Boyles
  * @version 1.0
  */
-public class Lisp implements LispADT {
+public class LinkedLisp implements LispADT {
 
     private Link head;
     private Link tail;
@@ -12,16 +12,16 @@ public class Lisp implements LispADT {
     /**
      * Constructor with size param, ignores the param
      * 
-     * @param size
+     * @param size Given size input
      */
-    public Lisp(int size) {
+    public LinkedLisp(int size) {
         this();
     }
 
     /**
      * Default constructor
      */
-    public Lisp() {
+    public LinkedLisp() {
         clear();
     }
 
@@ -29,14 +29,15 @@ public class Lisp implements LispADT {
      * Clear the current list
      */
     public void clear() {
-        curr = tail = new Link(null);
+        tail = new Link(null);
+        curr = tail;
         head = new Link(tail);
         listSize = 0;
     }
 
     @Override
     public LispADT add(Object c) {
-        curr.setNext(new Link(curr.Element(), curr.next()));
+        curr.setNext(new Link(curr.element(), curr.next()));
         curr.setElement(c);
         if (tail == curr) {
             tail = curr.next();
@@ -47,7 +48,7 @@ public class Lisp implements LispADT {
 
     @Override
     public Object get() throws RuntimeException {
-        return curr.Element();
+        return curr.element();
     }
 
     @Override
@@ -86,8 +87,7 @@ public class Lisp implements LispADT {
         if (curr == tail) {
             return null;
         }
-        Object tmp = curr.Element();
-        curr.setElement(curr.next().Element());
+        curr.setElement(curr.next().element());
         if (curr.next() == tail) {
             tail = curr;
         }

@@ -9,31 +9,31 @@ import org.junit.Test;
  */
 public class LispTest {
 
-    @Test
     /**
      * Test to make sure event with given size of 10 list is empty.
      */
+    @Test
     public void testConstructorWithParam() {
-        Lisp list = new Lisp(10);
+        LinkedLisp list = new LinkedLisp(10);
         assertSame(0, list.size()); // Assert empty list size is 0 even with
                                     // size param
     }
 
-    @Test
     /**
      * Test for size of 0 with no size param given to constructor.
      */
+    @Test
     public void testConstructorNoParam() {
-        Lisp list = new Lisp();
+        LinkedLisp list = new LinkedLisp();
         assertSame(0, list.size()); // Assert empty list size is 0
     }
 
-    @Test
     /**
      * Test for adding one object to list.
      */
+    @Test
     public void testAddOne() {
-        Lisp list = new Lisp(1);
+        LinkedLisp list = new LinkedLisp(1);
         list.add(1);
         assertSame(1, list.size()); // Make sure size was incremented
         assertSame(1, list.get()); // Make sure object in the list was the one
@@ -42,12 +42,12 @@ public class LispTest {
                                       // element
     }
 
-    @Test
     /**
      * Test to add two objects to list and move current between both links.
      */
+    @Test
     public void testAddTwo() {
-        Lisp list = new Lisp(2);
+        LinkedLisp list = new LinkedLisp(2);
         list.add(1);
         list.add(2);
         assertSame(2, list.size()); // Make sure size was incremented twice
@@ -56,12 +56,12 @@ public class LispTest {
         assertSame(1, list.get()); // Make sure first link is one
     }
 
-    @Test
     /**
      * Test to clear a list of all elements
      */
+    @Test
     public void testClear() {
-        Lisp list = new Lisp();
+        LinkedLisp list = new LinkedLisp();
         list.add(1);
         list.add(2);
         assertSame(2, list.size()); // Make sure list size is two before
@@ -70,22 +70,22 @@ public class LispTest {
         assertSame(0, list.size()); // Make sure list size is 0 after clear
     }
 
-    @Test
     /**
      * Test with one int
      */
+    @Test
     public void testGetInt() {
-        Lisp list = new Lisp();
+        LinkedLisp list = new LinkedLisp();
         list.add(1); // Add int '1' to list
         assertSame(1, list.get()); // Make sure int '1' is in the list
     }
 
-    @Test
     /**
      * Test get method with many integers
      */
+    @Test
     public void TestGetIntMany() {
-        Lisp list = new Lisp(100);
+        LinkedLisp list = new LinkedLisp(100);
         for (int i = 0; i < 101; i++) {
             list.add(i);
         }
@@ -97,24 +97,24 @@ public class LispTest {
                                    // that element is 0
     }
 
-    @Test
     /**
      * Test getting the next link in the list
      */
+    @Test
     public void testNext() {
-        Lisp list = new Lisp(2);
+        LinkedLisp list = new LinkedLisp(2);
         list.add(1); // Add one to list
         list.add(2); // Add two to list
         assertSame(1, list.next().get()); // Assert that the next link's value
                                           // is one
     }
 
-    @Test
     /**
      * Test getting previous element from list
      */
+    @Test
     public void testPrev() {
-        Lisp list = new Lisp();
+        LinkedLisp list = new LinkedLisp();
         list.add(1); // Add '1' to list
         list.add(2); // Add '2' to list
         list.next(); // Move current to next element
@@ -122,33 +122,33 @@ public class LispTest {
                                           // '2'
     }
 
-    @Test
     /**
      * Test for empty list should have size of zero
      */
+    @Test
     public void testSizeZero() {
-        Lisp list = new Lisp();
+        LinkedLisp list = new LinkedLisp();
         assertSame(0, list.size()); // Make sure empty list is size 0
     }
 
-    @Test
     /**
      * Test for list with many elements
      */
+    @Test
     public void testSizeNotZero() {
-        Lisp list = new Lisp(100);
+        LinkedLisp list = new LinkedLisp(100);
         for (int i = 0; i < 100; i++) {
             list.add(i); // Add i'th element to the list
         }
         assertSame(100, list.size()); // Make sure size is 100
     }
 
-    @Test
     /**
      * Test to try removing current element from list
      */
+    @Test
     public void testRemove() {
-        Lisp list = new Lisp(1);
+        LinkedLisp list = new LinkedLisp(1);
         list.add(1); // Add '1' to list
         assertSame(1, list.size()); // Make sure the size pre-remove is 1
         assertSame(1, list.get()); // Make sure element pre-remove is '1'
@@ -157,9 +157,12 @@ public class LispTest {
         assertSame(null, list.get()); // Make sure element post-remove is null
     }
     
+    /**
+     * Try to remove multiple elements
+     */
     @Test
     public void testRemoveMulti() {
-        Lisp list = new Lisp(2);
+        LinkedLisp list = new LinkedLisp(2);
         list.add(1); //Add '1' to the list
         list.add(2); //Add '2' to the list
         assertSame(2, list.size()); //Make sure list pre-remove is 2

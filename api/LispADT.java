@@ -207,7 +207,7 @@ public interface LispADT {
      * @return position of current element
      */
     public Integer curPos();
-    
+
     /**
      * <p>
      * Return the element at the current position of this LispADT.
@@ -236,6 +236,8 @@ public interface LispADT {
      * < a , b | c , d >.moveTo(0) -> < | a , b , c , d >.
      * </pre>
      * 
+     * @param p
+     *            index to move to
      * @return the possibly changed LispADT
      */
     public LispADT moveTo(Integer p);
@@ -314,6 +316,7 @@ public interface LispADT {
      * 
      * @param o
      *            the LispADT to check for equality with this LispADT
+     * @return object
      */
     public boolean equals(Object o);
 
@@ -334,6 +337,8 @@ public interface LispADT {
      * a is the current element, < | a , b , c , d >
      * current is after the last element < a , b , c , d | >
      * </pre>
+     * 
+     * @return String
      */
     public String toString();
 
