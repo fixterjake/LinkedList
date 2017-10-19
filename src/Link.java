@@ -5,9 +5,9 @@
  */
 public class Link {
     
-    private Object e;
+    private Object current;
     
-    private Link n;
+    private Link next;
     
     /**
      * Constructor for Link
@@ -15,8 +15,8 @@ public class Link {
      * @param inn Link inn
      */
     public Link(Object it, Link inn) {
-        e = it;
-        n = inn;
+        current = it;
+        next = inn;
     }
     
     /**
@@ -24,8 +24,8 @@ public class Link {
      * @param inn Link inn
      */
     public Link(Link inn) {
-        e = null;
-        n = inn;
+        current = null;
+        next = inn;
     }
     
     /**
@@ -33,7 +33,7 @@ public class Link {
      * @return Object
      */
     Object element() {
-        return e;
+        return current;
     }
     
     /**
@@ -42,7 +42,7 @@ public class Link {
      * @return Object assigned as it
      */
     Object setElement(Object it) {
-        e = it;
+        current = it;
         return it;
     }
     
@@ -51,7 +51,7 @@ public class Link {
      * @return Next Link
      */
     Link next() {
-        return n;
+        return next;
     }
     
     /**
@@ -60,7 +60,7 @@ public class Link {
      * @return Given Object assigned to N
      */
     Link setNext(Link inn) {
-        n = inn;
+        next = inn;
         return inn;
     }
 }
